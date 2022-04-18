@@ -1,0 +1,11 @@
+{
+  "name": "NodeJS base app documentation",
+  "version": "1.0.0",
+  "description": "NodeJS base app documentation",
+  "title" : "NodeJS base app documentation",
+  "template": {
+    "forceLanguage": "en",
+    "withCompare" : false,
+    "withGenerator" : false
+  }
+}

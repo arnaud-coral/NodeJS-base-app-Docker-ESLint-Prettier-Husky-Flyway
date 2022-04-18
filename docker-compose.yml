@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  #flyway:
+  #  image: flyway/flyway:8.5.5
+  #  command: migrate -url=jdbc:mariadb://${DB_HOST} -schemas=${DB_DATABASE} -user=${FLYWAY_USER} -password=${FLYWAY_PASSWORD} -connectRetries=3 -X
+  #  volumes:
+  #    - ./flyway/sql:/flyway/sql
+  #  container_name: flyway
+  nodejs:
+    build: .
+    #depends_on:
+    #  - flyway
+    command: npm run start.${NODE_ENV}
+    restart: unless-stopped
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3143:3143
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+    container_name: nodejs

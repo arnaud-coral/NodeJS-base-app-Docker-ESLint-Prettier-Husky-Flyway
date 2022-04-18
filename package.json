@@ -1,0 +1,51 @@
+{
+  "name": "nodejs-base-app",
+  "version": "1.0.0",
+  "description": "NodeJS base app using Express, ESLint, Prettier, Husky and Flyway",
+  "main": "src/server.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "start.production": "npm run build && node dist/server.js",
+    "start.develop": "npm run build && node dist/server.js",
+    "start.dev": "nodemon --legacy-watch --ignore 'tmp/' --exec babel-node src/server.js",
+    "test": "mocha --timeout 1000 --require @babel/register --exit",
+    "docs": "apidoc -i ./src -o ./public",
+    "prepare": "husky install",
+    "lint": "eslint ./src ./test --fix"
+  },
+  "dependencies": {
+    "apidoc": "^0.51.1",
+    "axios": "^0.26.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-rate-limit": "^6.3.0",
+    "express-validator": "^6.14.0",
+    "helmet": "^5.0.2",
+    "mariadb": "^3.0.0",
+    "sequelize": "^6.19.0",
+    "sequelize-cli": "^6.4.1",
+    "winston": "^3.7.2",
+    "winston-daily-rotate-file": "^4.6.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.17.7",
+    "chai": "^4.3.6",
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "mocha": "^9.2.2",
+    "node-fetch": "^3.2.3",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.2"
+  },
+  "author": "Arnaud Coral",
+  "license": "CC0-1.0"
+}
